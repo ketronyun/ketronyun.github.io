@@ -5,136 +5,192 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yunus Emre Oflaz | Portfolio</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f7fa;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
       color: #333;
+      line-height: 1.6;
+      padding: 20px;
     }
+
     header {
-      background: #2b2d42;
-      color: white;
-      padding: 40px 20px;
       text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #2196f3;
+      margin-bottom: 30px;
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.8em;
+      color: #2196f3;
+      font-size: 2.5rem;
     }
-    header p, header a {
-      font-size: 1em;
-      color: #ddd;
+
+    header p, a {
+      color: #555;
+      font-size: 0.95rem;
     }
+
     a {
-      color: #1e90ff;
+      color: #2196f3;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+
     section {
-      margin-bottom: 50px;
+      max-width: 900px;
+      margin: 0 auto 40px auto;
     }
+
     h2 {
-      color: #2b2d42;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 8px;
+      color: #1976d2;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #1976d2;
+      padding-bottom: 5px;
     }
+
     ul {
       padding-left: 20px;
     }
-    .highlight {
-      display: flex;
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      flex-wrap: wrap;
     }
-    .highlight img {
-      max-width: 100%;
-      width: 250px;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
     }
-    .qualities {
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .lightbox:target {
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 10px;
     }
-    .qualities span {
-      background: #e0ecff;
-      color: #003366;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-size: 0.95em;
+
+    footer {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Yunus Emre Oflaz</h1>
     <p>Email: yunusemreoflaz@hotmail.com | Phone: +90 507 137 0552</p>
     <p><a href="https://github.com/ketronyun" target="_blank">GitHub Profile</a></p>
   </header>
 
-  <main>
-    <section>
-      <h2>About Me</h2>
-      <p>
-        I am a graduate of Karabük University with an associate degree in Computer Programming. I have hands-on experience with Java, PHP, and C# and specialize in backend development.
-        I developed an Arduino-integrated Hotel Management System, taught Unity lessons at Karabük Youth Center, and participated in robotic coding workshops. I am a responsible, solution-oriented team player who is eager to grow and explore new technologies.
-      </p>
-      <div class="qualities">
-        <span>Quick Learner</span>
-        <span>Adaptable</span>
-        <span>Research-Oriented</span>
-        <span>Team Player</span>
-        <span>Curious</span>
-      </div>
-    </section>
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a graduate of Karabük University with an associate degree in Computer Programming. I have hands-on experience with Java, PHP, and C# and specialize in backend development.
+      My technical documentation proficiency is at B2 English level. I developed an Arduino-integrated Hotel Management System, taught Unity lessons at Karabük Youth Center, and participated in robotic coding workshops.
+      I am a responsible, solution-oriented team player who is eager to grow and explore new technologies.
+    </p>
+  </section>
 
-    <section>
-      <h2>Projects</h2>
-      <ul>
-        <li><a href="https://github.com/ketronyun/hotel-management-system">Arduino-Integrated Hotel Management System</a></li>
-        <li><a href="https://github.com/ketronyun/game-server-setup">Game Server Setup</a></li>
-        <li><a href="https://github.com/ketronyun/">More on GitHub...</a></li>
-      </ul>
-      <div class="highlight">
-        <img src="images/hotel_project.jpg" alt="Hotel Management Project Screenshot">
-        <img src="images/arduino_setup.jpg" alt="Arduino Hardware Integration">
-      </div>
-    </section>
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="#hotel">Arduino Hotel Management System</a></li>
+      <li><a href="https://github.com/ketronyun/game-server-setup" target="_blank">Game Server Setup</a></li>
+      <li><a href="https://github.com/ketronyun/" target="_blank">More on GitHub...</a></li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>Skills</h2>
-      <ul>
-        <li>Languages: Java, C#, PHP</li>
-        <li>Tools: Arduino, Unity, Git</li>
-        <li>Other: Backend Development, Game Server Management</li>
-      </ul>
-    </section>
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>Languages: Java, C#, PHP</li>
+      <li>Tools: Arduino, Unity, Git</li>
+      <li>Other: Backend Development, Game Server Management</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>Certificates</h2>
-      <ul>
-        <li>C# – 2024</li>
-        <li>Java – 2024</li>
-        <li>PHP – 2025</li>
-      </ul>
-    </section>
+  <section>
+    <h2>Certificates</h2>
+    <ul>
+      <li>C# – 2024</li>
+      <li>Java – 2024</li>
+      <li>PHP – 2025</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>Education</h2>
-      <p>Associate Degree in Computer Programming<br />
-      Karabük University – TOBB Vocational School of Higher Education (2024–2025)</p>
-    </section>
-  </main>
+  <section>
+    <h2>Education</h2>
+    <p>Associate Degree in Computer Programming<br />
+    Karabük University – TOBB Vocational School of Higher Education (2024–2025)</p>
+  </section>
+
+  <!-- Hotel Management Project Section -->
+  <section id="hotel">
+    <h2>Arduino Hotel Management System</h2>
+    <p>This project was developed using Arduino and focuses on managing hotel operations such as check-in/check-out, room status tracking, and automated access control using RFID cards.</p>
+
+    <ul>
+      <li>RFID card-based room access</li>
+      <li>Room status display (occupied / available)</li>
+      <li>Guest registration and logging via LCD and buttons</li>
+      <li>Data tracking through serial monitor</li>
+    </ul>
+
+    <div class="gallery-grid">
+      <a href="#img1"><img src="images/1.jpg" alt="Resim 1" /></a>
+      <a href="#img2"><img src="images/2.jpg" alt="Resim 2" /></a>
+      <a href="#img3"><img src="images/3.jpg" alt="Resim 3" /></a>
+      <a href="#img4"><img src="images/4.jpg" alt="Resim 4" /></a>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="img1" class="lightbox"><a href="#"><img src="images/1.jpg" alt="Resim 1" /></a></div>
+    <div id="img2" class="lightbox"><a href="#"><img src="images/2.jpg" alt="Resim 2" /></a></div>
+    <div id="img3" class="lightbox"><a href="#"><img src="images/3.jpg" alt="Resim 3" /></a></div>
+    <div id="img4" class="lightbox"><a href="#"><img src="images/4.jpg" alt="Resim 4" /></a></div>
+
+    <p style="margin-top:15px;">🔗 <a href="https://github.com/ketronyun/hotel-management-system" target="_blank">GitHub Repository</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Yunus Emre Oflaz</p>
+  </footer>
+
 </body>
 </html>
